@@ -10,12 +10,21 @@ from customer import Customer
 
 
 class User:
+    """
+
+    """
     __ecommerce_data = DataStorage.ecommerce_data  # all the data
 
     def __init__(self):
+        """
+
+        """
         self.record = None  # to store specific user record
 
     def login(self, account_number, password):
+        """
+
+        """
         # if the account number exist then retrieve the record
         if User.__ecommerce_data.get(account_number):
             # set the current record for validation

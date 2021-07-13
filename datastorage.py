@@ -32,11 +32,6 @@ class DataStorage:
                 'prices': [299.99, 21.99, 17.99],
                 'stock': [100, 112, 23],
                 'type': 'seller',
-                'orders': {
-                    1001: {
-
-                    }
-                }
             },
         10002:
             {
@@ -52,7 +47,8 @@ class DataStorage:
                 ],
                 'prices': [19.99, 24.99, 5.99],
                 'stock': [10, 100, 0],
-                'type': 'seller'
+                'type': 'seller',
+                'orders': [[], [], [], []],  # sku, qty, customer_id, shipping_status
             },
         10003:
             {
@@ -60,18 +56,6 @@ class DataStorage:
                 'last_name': 'Smith',
                 'email': 'jj@rhyta.com',
                 'password': 'UDwh&AWD72g23',
-                'products': [],
-                'prices': [],
-                'type': 'customer',
-                'orders': {
-                    1000: {
-                        "products": [],
-                        "sku": [],
-                        "price": [],
-                        "total": 1000.00,
-                        "payment_type": [],
-                        "shipper": []
-                    }
-                }
+                'type': 'customer'
             },
     }

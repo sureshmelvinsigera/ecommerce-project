@@ -15,6 +15,9 @@ class Seller:
     __ecommerce_data = DataStorage.ecommerce_data  # all the data
 
     def __init__(self):
+        """
+
+        """
         self.__products_table = PrettyTable()
 
     def seller_admin(self, account_number):
