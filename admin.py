@@ -25,13 +25,13 @@ class Admin:
         """
         self.__sellers_table = PrettyTable()
         self.__sellers_table.title = 'All sellers'
-        self.__sellers_table.field_names = ["Seller full name", "Store name"]
+        self.__sellers_table.field_names = ["Seller full name", "Email address"]
         self.__sellers_table.align = "l"
         for key, values in Admin.__ecommerce_data.items():
             for k, v in values.items():
                 if v == 'seller':
                     self.__sellers_table.add_row(
-                        [values['first_name'] + " " + values['last_name'], values['store_name']])
+                        [values['first_name'] + " " + values['last_name'], values['email']])
         print(self.__sellers_table)
 
     def show_all_customers(self):
@@ -40,7 +40,7 @@ class Admin:
         """
         self.__customers_table = PrettyTable()
         self.__customers_table.title = 'All customers'
-        self.__customers_table.field_names = ["Customer full name", "EMail address"]
+        self.__customers_table.field_names = ["Customer full name", "Email address"]
         self.__customers_table.align = "l"
         for key, values in Admin.__ecommerce_data.items():
             for k, v in values.items():

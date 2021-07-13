@@ -1,3 +1,5 @@
+import re
+
 from PyInquirer import prompt, Token
 from prettytable import PrettyTable
 from prompt_toolkit.styles import style_from_dict
@@ -23,28 +25,24 @@ class Product:
         :return:
         """
         print(30 * "-", "add new product", 30 * "-")
-        # product_name = input("Please enter the product name: ")
-        # product_price = float(input("Please enter the product price: "))
-        # product_stock_qty = int(input("Please enter the stock qty: "))
-        # # append product attributes to the list
-        # ecommerce_data.get(account_number)["products"].append(product_name)
-        # ecommerce_data.get(account_number)["prices"].append(product_price)
-        # ecommerce_data.get(account_number)["stock"].append(product_stock_qty)
+        product_name = input("Please enter the product name: ")
+        product_price = float(input("Please enter the product price: "))
+        product_stock_qty = int(input("Please enter the stock qty: "))
+
+        # append product attributes to the list
+        Product.__ecommerce_data.get(account_number)["products"].append(product_name)
+        Product.__ecommerce_data.get(account_number)["prices"].append(product_price)
+        Product.__ecommerce_data.get(account_number)["stock"].append(product_stock_qty)
 
         # generate unique sku for the new product based on the last product in the dictionary
-
-        for key, values in Product.__ecommerce_data.items():
-            for k, v in values.items():
-                print(k, v)
-
-        # sku_pos = len(ecommerce_data.get(account_number)["sku"]) - 1
-        # sku = ecommerce_data.get(account_number)["sku"][sku_pos]
-        # # separate text from integer
-        # temp_sku = re.compile("([a-zA-Z]+)([0-9]+)")
-        # res = temp_sku.match(sku).groups()
-        # sku_str = "sk" + str(int(res[1]) + 1)
-        # ecommerce_data.get(account_number)["sku"].append(sku_str)
-        # print("product has been successfully added")
+        sku_pos = len(Product.__ecommerce_data.get(account_number)["sku"]) - 1
+        sku = Product.__ecommerce_data.get(account_number)["sku"][sku_pos]
+        # separate text from integer
+        temp_sku = re.compile("([a-zA-Z]+)([0-9]+)")
+        res = temp_sku.match(sku).groups()
+        sku_str = Product.__ecommerce_data.get(account_number)['first_name'][:2] + str(int(res[1]) + 1)
+        Product.__ecommerce_data.get(account_number)["sku"].append(sku_str)
+        print("product has been successfully added")
 
     @staticmethod
     def update_product(account_number):
@@ -118,7 +116,7 @@ class Product:
 
     def show_all_products(self, account_number=None):
         """
-        show all the products belongs to the site owner, seller and logged in user
+        show all the products belongs to the site owner, and seller to the logged in user.
         """
         # if the current user is customer then show all the products
         if account_number is None:
@@ -133,15 +131,17 @@ class Product:
                     # logic to loop over sku, products, prices, and stock
                     for index, data in enumerate(
                             zip(values["sku"], values["products"], values["prices"], values["stock"])):
-                        set_index += 1
-                        # generate the table
-                        self.__products_table.add_row([
-                            set_index, keys,
-                            values["sku"][index],
-                            values["products"][index],
-                            values["prices"][index],
-                            values["stock"][index]
-                        ])
+                        # show products that is in stock
+                        if values["stock"][index] != 0:
+                            set_index += 1
+                            # generate the products table
+                            self.__products_table.add_row([
+                                set_index, keys,
+                                values["sku"][index],
+                                values["products"][index],
+                                values["prices"][index],
+                                values["stock"][index]
+                            ])
             print(self.__products_table)
 
         else:
@@ -154,3 +154,6 @@ class Product:
                 self.__products_table.add_row(
                     [record['sku'][i], record['products'][i], record['prices'][i], record['stock'][i]])
             print(self.__products_table)
+
+    def search_product(self):
+        pass

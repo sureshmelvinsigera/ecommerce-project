@@ -8,6 +8,7 @@ from admin import Admin
 from seller import Seller
 from customer import Customer
 
+
 class User:
     __ecommerce_data = DataStorage.ecommerce_data  # all the data
 
@@ -69,6 +70,10 @@ class User:
                 'last_name': last_name,
                 'email': email,
                 'password': password,
+                'sku': [],
+                'products': [],
+                'prices': [],
+                'stock': [],
                 'type': 'seller'
             }
 

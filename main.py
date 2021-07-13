@@ -22,10 +22,10 @@ class Menu:
             system_user = User()
             # user_id = int(input("Please enter the user id: "))
             # password = input("Please enter the password: ")
-            # system_user.login(user_id, password)
-            # system_user.login(10000, "UDwh&AWD72g21")
-            system_user.login(10001, "UDwh&AWD72g22")
-            #system_user.login(10003, "UDwh&AWD72g23")
+            #system_user.login(user_id, password)
+            #system_user.login(10000, "UDwh&AWD72g21")
+            # system_user.login(10001, "UDwh&AWD72g22")
+            system_user.login(10003, "UDwh&AWD72g23")
         if user_login_result['user-login-selection'] == 'Register':
             from user import User
             system_user = User()
