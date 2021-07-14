@@ -27,7 +27,7 @@ class Customer:
                 {
                     'type': 'list',
                     'name': 'customer-menu-selection',
-                    'message': 'customer Menu',
+                    'message': 'Customer Menu',
                     'choices': [
                         'Add to shopping cart', 'Show shopping cart', 'Checkout', 'Logout'
                     ]
