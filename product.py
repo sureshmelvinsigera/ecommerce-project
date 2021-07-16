@@ -142,9 +142,14 @@ class Product:
         # if the current user is customer then show all the products
         if account_number is None:
             self.__products_table.title = 'Products from all stores'
-            self.__products_table.field_names = ["Selection id", "Seller name",
-                                                 "SKU", "Product name", "Price per unit $",
-                                                 "In stock QTY"]
+            self.__products_table.field_names = [
+                "Selection id",
+                "Seller name",
+                "SKU",
+                "Product name",
+                "Price per unit $",
+                "In stock QTY"
+            ]
             self.__products_table.align = "l"
             set_index = 0
             for keys, values in Product.__ecommerce_data.items():

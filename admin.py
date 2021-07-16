@@ -14,6 +14,7 @@ from product import Product
 from datastorage import DataStorage
 from main import Menu
 from searchdatastorage import ProductSearch
+from orderstatus import OrderStatus
 
 
 class Admin:
@@ -86,6 +87,7 @@ class Admin:
                         'Delete product',
                         'Show all sellers',
                         'Show customers',
+                        'Current orders',
                         'Logout'
                     ]
                 }
@@ -117,6 +119,9 @@ class Admin:
             # If the user selection is to see all the customers
             if admin_menu_selection['admin-menu-selection'] == 'Show customers':
                 self.show_all_customers()
+            if admin_menu_selection['admin-menu-selection'] == 'Current orders':
+                order_status = OrderStatus()
+                order_status.status()
             # if the user decided to logout, then show the main menu
             if admin_menu_selection['admin-menu-selection'] == 'Logout':
                 menu = Menu()

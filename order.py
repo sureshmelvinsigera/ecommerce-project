@@ -22,7 +22,14 @@ class Order:
     status = None
 
     @staticmethod
-    def process_order(customer_record, customer_address, customer_cc, seller_id, sku, pos, check_out_qty):
+    def process_order(account_number,
+                      customer_record,
+                      customer_address,
+                      customer_cc,
+                      seller_id,
+                      sku,
+                      pos,
+                      check_out_qty):
         """
         This method obtains all the required user information from the ShoppingCart class in order to process the order.
         This Class is also responsible for checking the following bases-cases:
@@ -31,9 +38,10 @@ class Order:
            a product. Therefore, the system must maintain the state.
         3. User completed all the required steps to process the order, and visits the checkout page,
            Therefore, the system must maintain the shopping cart state.
+        :param account_number:
         :param customer_record:
         :param customer_address:
-        :param customer_cc:s
+        :param customer_cc:
         :param seller_id:
         :param sku:
         :param pos:
@@ -74,8 +82,13 @@ class Order:
                             # update the new stock qty for each seller
                             Order.__ecommerce_data.get(seller_id[i])["stock"][r] = \
                                 Order.__ecommerce_data.get(seller_id[i])["stock"][r] - check_out_qty[i]
-                            # for debug purpose only
-                            # print("After ", Order.__ecommerce_data.get(seller_id[i])["stock"][r])
+                            # add order details to the seller account
+                            Order.__ecommerce_data.get(seller_id[i])["order_customer_full_name"].append(
+                                customer_record["first_name"] + " " + customer_record["last_name"])
+                            Order.__ecommerce_data.get(seller_id[i])["order_customer_id"].append(account_number)
+                            Order.__ecommerce_data.get(seller_id[i])["order_customer_sku"].append(account_number)
+                            Order.__ecommerce_data.get(seller_id[i])["order_customer_qty"].append(account_number)
+                            Order.__ecommerce_data.get(seller_id[i])["order_shipping_status"].append(False)
                 print("Your order has been successfully processed")
                 # update the state, so the shopping cart class is aware of it
                 Order.status = "Success"

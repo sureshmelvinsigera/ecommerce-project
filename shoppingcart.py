@@ -99,6 +99,7 @@ class ShoppingCart:
         new_order_request = Order()
         # call the order process method
         new_order_request.process_order(
+            account_number,
             customer_record,
             customer_address, customer_cc, self.__seller_id, self.__sku,
             self.__pos,

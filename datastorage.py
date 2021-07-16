@@ -26,6 +26,13 @@ class DataStorage:
                          'Learning Python, 5th Edition'],
             'prices': [29.99, 33.99, 33.86],
             'stock': [10, 12, 12],
+            'order_customer_id': ["10003"],
+            'order_customer_full_name': ["Malcolm Smith"],
+            'order_customer_sku': ["su1002"],
+            'order_customer_product_name': ["Automate The Boring Stuff With Python, 2nd Edition"],
+            'order_customer_price_per_unit': [33.99],
+            'order_customer_qty': [1],
+            'order_shipping_status': [True],
             'type': 'owner',
         },
         10001:
@@ -43,6 +50,13 @@ class DataStorage:
                 'prices': [299.99, 21.99, 17.99],
                 'stock': [100, 112, 23],
                 'type': 'seller',
+                'order_customer_id': [],
+                'order_customer_full_name': [],
+                'order_customer_sku': [],
+                'order_customer_product_name': [],
+                'order_customer_price_per_unit': [],
+                'order_customer_qty': [],
+                'order_shipping_status': [],
             },
         10002:
             {
@@ -59,14 +73,36 @@ class DataStorage:
                 'prices': [19.99, 24.99, 5.99],
                 'stock': [10, 100, 0],
                 'type': 'seller',
-                'orders': [[], [], [], []],  # sku, qty, customer_id, shipping_status
+                'order_customer_id': [],
+                'order_customer_full_name': [],
+                'order_customer_sku': [],
+                'order_customer_product_name': [],
+                'order_customer_price_per_unit': [],
+                'order_customer_qty': [],
+                'order_shipping_status': []
             },
         10003:
             {
-                'first_name': 'j',
+                'first_name': 'Malcolm',
                 'last_name': 'Smith',
                 'email': 'jj@rhyta.com',
                 'password': 'UDwh&AWD72g23',
+                'type': 'customer'
+            },
+        10004:
+            {
+                'first_name': 'Pascal',
+                'last_name': 'Brogdon',
+                'email': 'mbrogdon@gmail.com',
+                'password': 'UDwh&AWD72g24',
+                'type': 'customer'
+            },
+        10005:
+            {
+                'first_name': 'Bradley',
+                'last_name': 'Beal',
+                'email': 'beal123@gmail.com',
+                'password': 'UDwh&AWD72g26',
                 'type': 'customer'
             },
     }
