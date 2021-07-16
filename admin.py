@@ -6,6 +6,7 @@ from prettytable import PrettyTable
 from product import Product
 from datastorage import DataStorage
 from main import Menu
+from searchdatastorage import ProductSearch
 
 
 class Admin:
@@ -57,14 +58,25 @@ class Admin:
                     'name': 'admin-menu-selection',
                     'message': 'Admin Menu',
                     'choices': [
-                        'Show all products', 'Add product', 'Edit product', 'Delete product',
-                        'Show all sellers', 'Show customers', 'Logout'
+                        'Product search',
+                        'Show all products',
+                        'Add product',
+                        'Edit product',
+                        'Delete product',
+                        'Show all sellers',
+                        'Show customers',
+                        'Logout'
                     ]
                 }
             ]
 
             product = Product()
             admin_menu_selection = prompt(admin_menu)
+
+            if admin_menu_selection['admin-menu-selection'] == 'Product search':
+                keyword = input("Please enter any keyword: ")
+                product_search = ProductSearch()
+                product_search.search_products(keyword)
             if admin_menu_selection['admin-menu-selection'] == 'Show all products':
                 product.show_all_products(account_number)
             if admin_menu_selection['admin-menu-selection'] == 'Add product':

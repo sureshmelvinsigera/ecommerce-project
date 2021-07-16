@@ -6,6 +6,7 @@ from prettytable import PrettyTable
 from product import Product
 from datastorage import DataStorage
 from main import Menu
+from searchdatastorage import ProductSearch
 
 
 class Seller:
@@ -31,13 +32,23 @@ class Seller:
                     'name': 'seller-menu-selection',
                     'message': 'Seller Menu',
                     'choices': [
-                        'Show all products', 'Add product', 'Edit product', 'Delete product', 'Logout'
+                        'Product search',
+                        'Show all products',
+                        'Add product',
+                        'Edit product',
+                        'Delete product',
+                        'Logout'
                     ]
                 }
             ]
 
             product = Product()
             seller_menu_selection = prompt(seller_menu)
+
+            if seller_menu_selection['seller-menu-selection'] == 'Product search':
+                keyword = input("Please enter any keyword: ")
+                product_search = ProductSearch()
+                product_search.search_products(keyword)
             if seller_menu_selection['seller-menu-selection'] == 'Show all products':
                 product.show_all_products(account_number)
             if seller_menu_selection['seller-menu-selection'] == 'Add product':

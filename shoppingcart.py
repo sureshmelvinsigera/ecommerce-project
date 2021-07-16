@@ -1,3 +1,4 @@
+
 from prettytable import PrettyTable
 
 from datastorage import DataStorage

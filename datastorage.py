@@ -1,6 +1,17 @@
+__author__ = "Suresh Melvin Sigera"
+__copyright__ = "Copyright 2021, The ESSEX Project"
+__license__ = "GPL"
+__version__ = "1.0.0"
+__maintainer__ = "Suresh Melvin Sigera"
+__email__ = "sureshsigera@gmail.com"
+__status__ = "Staging"
+
+
 class DataStorage:
     """
-
+    This class provides initial dataset to mimic ecommerce application.
+    According to this data structure, there are three different type of users: site owner, seller and customer.
+    This class does not contain any methods, it contains a single class variable to hold the entire dataset.
     """
 
     ecommerce_data = {

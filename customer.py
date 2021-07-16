@@ -4,6 +4,7 @@ from datastorage import DataStorage
 from main import Menu
 from product import Product
 from shoppingcart import ShoppingCart
+from searchdatastorage import ProductSearch
 
 
 class Customer:
@@ -29,7 +30,11 @@ class Customer:
                     'name': 'customer-menu-selection',
                     'message': 'Customer Menu',
                     'choices': [
-                        'Add to shopping cart', 'Show shopping cart', 'Checkout', 'Logout'
+                        'Product search',
+                        'Add to shopping cart',
+                        'Show shopping cart',
+                        'Checkout',
+                        'Logout'
                     ]
                 }
             ]
@@ -37,14 +42,19 @@ class Customer:
             product = Product()
             customer_menu_selection = prompt(customer_menu)
 
+            if customer_menu_selection['customer-menu-selection'] == 'Product search':
+                keyword = input("Please enter any keyword: ")
+                product_search = ProductSearch()
+                product_search.search_products(keyword)
+
             if customer_menu_selection['customer-menu-selection'] == 'Add to shopping cart':
                 product.show_all_products()
-                # selection_id = input("Please enter the sku: ")
-                # selection_qty = int(input("Please enter the qty: "))
-                # self.__shopping_cart.add_to_cart(selection_id, selection_qty)
-                self.__shopping_cart.add_to_cart("su1003", 1)
-                self.__shopping_cart.add_to_cart("jo1007", 2)
-                self.__shopping_cart.add_to_cart("jo1005", 1)
+                selection_id = input("Please enter the sku: ")
+                selection_qty = int(input("Please enter the qty: "))
+                self.__shopping_cart.add_to_cart(selection_id, selection_qty)
+                # self.__shopping_cart.add_to_cart("su1003", 1)
+                # self.__shopping_cart.add_to_cart("jo1007", 2)
+                # self.__shopping_cart.add_to_cart("jo1005", 1)
             if customer_menu_selection['customer-menu-selection'] == 'Show shopping cart':
                 self.__shopping_cart.show_cart()
             if customer_menu_selection['customer-menu-selection'] == 'Checkout':

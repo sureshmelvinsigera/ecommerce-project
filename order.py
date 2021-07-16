@@ -1,3 +1,4 @@
+
 from PyInquirer import prompt
 
 from datastorage import DataStorage
@@ -19,7 +20,8 @@ class Order:
                 'name': 'order_menu-selection',
                 'message': 'Would you like to proceed ?',
                 'choices': [
-                    'Yes', 'No'
+                    'Yes',
+                    'No'
                 ]
             }
         ]

@@ -154,6 +154,3 @@ class Product:
                 self.__products_table.add_row(
                     [record['sku'][i], record['products'][i], record['prices'][i], record['stock'][i]])
             print(self.__products_table)
-
-    def search_product(self):
-        pass
