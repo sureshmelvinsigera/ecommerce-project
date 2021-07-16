@@ -1,4 +1,12 @@
+__author__ = "Suresh Melvin Sigera"
+__copyright__ = "Copyright 2021, The ESSEX Project"
+__license__ = "GPL"
+__version__ = "1.0.0"
+__maintainer__ = "Suresh Melvin Sigera"
+__email__ = "sureshsigera@gmail.com"
+__status__ = "Staging"
 
+# import required dependencies
 from prettytable import PrettyTable
 
 from datastorage import DataStorage
@@ -7,9 +15,10 @@ from order import Order
 
 class ShoppingCart:
     """
-
+    This class provides utility methods shopping cart related tasks.
     """
-    __ecommerce_data = DataStorage.ecommerce_data  # all the data
+    # load local data storage
+    __ecommerce_data = DataStorage.ecommerce_data
 
     def __init__(self):
         self.__seller_id = []
@@ -27,6 +36,9 @@ class ShoppingCart:
     def add_to_cart(self, selection_id, selection_qty):
         """
         add user product selection to the cart instance variables
+        :param selection_id:
+        :param selection_qty:
+        :return:
         """
         # read the data from data storage
         for keys, values in ShoppingCart.__ecommerce_data.items():
@@ -47,6 +59,7 @@ class ShoppingCart:
     def show_cart(self):
         """
         Show up to date shopping cart when user select the menu
+        :return:
         """
         # create new instance of the shopping cart
         self.__cart_table = PrettyTable()
@@ -74,7 +87,9 @@ class ShoppingCart:
 
     def check_out(self, account_number):
         """
-        this method will create a new order based on the items user has added to the shopping cart
+        This method will create a new order based on the items user has added to the shopping cart
+        :param account_number:
+        :return:
         """
         # obtain the current logged in users account number
         customer_record = ShoppingCart.__ecommerce_data.get(account_number)

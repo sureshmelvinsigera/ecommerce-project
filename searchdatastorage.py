@@ -64,4 +64,3 @@ class ProductSearch:
 
 # p = ProductSearch()
 # p.search_products("Python")
-s

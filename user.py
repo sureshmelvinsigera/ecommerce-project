@@ -31,6 +31,9 @@ class User:
         """
         This method validated the user credentials based on user id, and password, and then it will route the user
         to a specific user dashboard.
+        :param account_number:
+        :param password:
+        :return:
         """
         # if the account number exist then retrieve the record
         if User.__ecommerce_data.get(account_number):
@@ -61,6 +64,7 @@ class User:
         """
         This method creates a new user object in the local data storage. User have a choice to register
         as a customer or a seller.
+        :return:
         """
         create_account_menu = [
             {

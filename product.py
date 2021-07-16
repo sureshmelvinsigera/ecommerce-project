@@ -1,3 +1,12 @@
+__author__ = "Suresh Melvin Sigera"
+__copyright__ = "Copyright 2021, The ESSEX Project"
+__license__ = "GPL"
+__version__ = "1.0.0"
+__maintainer__ = "Suresh Melvin Sigera"
+__email__ = "sureshsigera@gmail.com"
+__status__ = "Staging"
+
+# import required dependencies
 import re
 
 from PyInquirer import prompt, Token
@@ -8,9 +17,11 @@ from datastorage import DataStorage
 
 class Product:
     """
-
+    This class provides utility methods for all the product related activities such as add product, edit product,
+    delete product, and show all products.
     """
-    __ecommerce_data = DataStorage.ecommerce_data  # all the data
+    # load local data storage
+    __ecommerce_data = DataStorage.ecommerce_data
 
     def __init__(self):
         self.__products_table = PrettyTable()
@@ -21,7 +32,7 @@ class Product:
     def add_product(account_number):
         """
         this method asks the user the enter the product name, price, qty and save the information to the
-        ecommerce_data dictionary.
+        local data storage.
         :return:
         """
         print(30 * "-", "add new product", 30 * "-")
@@ -34,7 +45,7 @@ class Product:
         Product.__ecommerce_data.get(account_number)["prices"].append(product_price)
         Product.__ecommerce_data.get(account_number)["stock"].append(product_stock_qty)
 
-        # generate unique sku for the new product based on the last product in the dictionary
+        # generate unique sku for the new product based on the last product in the user's data storage
         sku_pos = len(Product.__ecommerce_data.get(account_number)["sku"]) - 1
         sku = Product.__ecommerce_data.get(account_number)["sku"][sku_pos]
         # separate text from integer
@@ -48,9 +59,12 @@ class Product:
     def update_product(account_number):
         """
         update product information using product id and account_number
+        :param account_number:
+        :return:
         """
         print(30 * "-", "Update product", 30 * "-")
 
+        # menu style sheet
         style = style_from_dict({
             Token.Separator: '#cc5454',
             Token.QuestionMark: '#673ab7 bold',
@@ -61,6 +75,7 @@ class Product:
             Token.Question: '',
         })
 
+        # load all the products that belongs to the current logged in user
         product_edit_menu = [
             {
                 'type': 'list',
@@ -74,6 +89,7 @@ class Product:
 
         # print all the products that belongs to the seller
         for i in range(len(Product.__ecommerce_data.get(account_number)["products"])):
+            # indicate the current product that the user is editing
             if product_edit_menu_result['product-edit-menu-selection'] == \
                     Product.__ecommerce_data.get(account_number)["products"][i]:
                 print(f"Editing ... {Product.__ecommerce_data.get(account_number)['products'][i]}")
@@ -91,6 +107,8 @@ class Product:
     def delete_product(account_number):
         """
         delete product that belongs to the seller
+        :param account_number:
+        :return:
         """
         # load all the products from the current seller
         choices = Product.__ecommerce_data.get(account_number)["products"]
@@ -106,6 +124,7 @@ class Product:
                 'choices': choices,
             }
         ]
+
         product_delete_menu_result = prompt(product_delete_menu)
 
         # delete product belongs to current seller
@@ -117,6 +136,8 @@ class Product:
     def show_all_products(self, account_number=None):
         """
         show all the products belongs to the site owner, and seller to the logged in user.
+        :param account_number:
+        :return:
         """
         # if the current user is customer then show all the products
         if account_number is None:
@@ -149,8 +170,10 @@ class Product:
             self.__products_table.title = 'Your product list'
             record = Product.__ecommerce_data.get(account_number)
             self.__products_table.field_names = ["SKU", "Product name", "Price per unit $", "In stock QTY"]
+            # align table content
             self.__products_table.align = "l"
             for i in range(len(record['products'])):
+                # add each product to the product table with required data attributes
                 self.__products_table.add_row(
                     [record['sku'][i], record['products'][i], record['prices'][i], record['stock'][i]])
             print(self.__products_table)

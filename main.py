@@ -21,6 +21,7 @@ class Menu:
     def user_login_menu():
         """
         This static method generates the user login, register and exit functionality.
+        :return:
         """
         # menu consists of login, register and exit
         user_login = [
