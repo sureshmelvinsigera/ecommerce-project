@@ -1,3 +1,12 @@
+__author__ = "Suresh Melvin Sigera"
+__copyright__ = "Copyright 2021, The ESSEX Project"
+__license__ = "GPL"
+__version__ = "1.0.0"
+__maintainer__ = "Suresh Melvin Sigera"
+__email__ = "sureshsigera@gmail.com"
+__status__ = "Staging"
+
+# import required dependencies
 import sys
 
 from PyInquirer import prompt
@@ -5,13 +14,13 @@ from PyInquirer import prompt
 
 class Menu:
     """
-
+    This class provides main utility methods for the driver codes
     """
 
     @staticmethod
     def user_login_menu():
         """
-
+        This static method generates the user login, register and exit functionality.
         """
         # menu consists of login, register and exit
         user_login = [
@@ -19,7 +28,11 @@ class Menu:
                 'type': 'list',
                 'name': 'user-login-selection',
                 'message': 'User Login',
-                'choices': ['Login', 'Register', 'Exit']
+                'choices': [
+                    'Login',
+                    'Register',
+                    'Exit'
+                ]
             }
         ]
 

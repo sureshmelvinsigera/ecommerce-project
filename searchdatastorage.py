@@ -29,7 +29,7 @@ class ProductSearch:
     def search_products(self, keyword):
         """
         If the results are available upon request, this method will generate a table
-        or else show messaged to the user
+        or else shows an error message to current logged in user
         :param keyword:
         :return:
         """
@@ -62,5 +62,6 @@ class ProductSearch:
                      self.__result_price[i]])
             print(self.__search_results_table)
 
-p = ProductSearch()
-p.search_products("Python")
+# p = ProductSearch()
+# p.search_products("Python")
+s
