@@ -94,7 +94,9 @@ This class provides the site admin or the 3rd party seller to revise the shippin
 #### product class
 This class provides utility methods for all the product-related actions such as add products, edit existing products, deleting a product, and show all products. The customer, admin and seller classes are composite of the product class in order to perform the basic functionality.
 
-### productsearch class
+#### productsearch class
 This class provides utility methods to search products by keywords and return the results from the storage.
 
+#### shoppingcart class
+This class provides utility methods for shopping cart-related tasks. Such as, adding new products to the shopping cart, current cart lookup, and checkout. When the user selects the checkout method, it created a new instance of the order class. In the OOP paradigm, this is a relationship known as has a relationship. 
 
