@@ -10,7 +10,7 @@ I have spent close to 200 hrs on building this program and achieve a deeper unde
 
 ## Functionality
 
-### Site Owner
+#### Site Owner
 - Can search for a product
 - View all the products across the system
 - Add new products
@@ -22,7 +22,7 @@ I have spent close to 200 hrs on building this program and achieve a deeper unde
 - Change shipping status
 - Apply site-wide promotion codes
 
-### 3rd party seller
+#### 3rd party seller
 - Can search for a product
 - View all the product belongs to the seller
 - Add new products
@@ -31,7 +31,7 @@ I have spent close to 200 hrs on building this program and achieve a deeper unde
 - View current orders
 - Change shipping status
 
-### Customer
+#### Customer
 - Can search for a product
 - View all the products all the sellers
 - Add to shopping cart
@@ -40,10 +40,58 @@ I have spent close to 200 hrs on building this program and achieve a deeper unde
 - Checkout
 - Choose credit card, debit card or PayPal as a payment method
 
+### Classes overview
 The system comprises 14 different classes:
 
 #### datastorage class
 This class provides an initial dataset to facilitate all the CRUD operations throughout the entire program. All the Python classes in this system software use this data set to store and retrieve data during the runtime. According to this data structure, there are three different users: site owner, seller and customer. This class does not contain any methods. It incorporates a single class variable to hold the entire dataset.
+```python
+...
+
+        10002:
+            {
+                'first_name': 'joseph',
+                'last_name': 'smith',
+                'email': 'JosephSSmith@rhyta.com',
+                'password': 'UDwh&AWD72g23',
+                'sku': ['jo1007', 'jo1008', 'jo1009'],
+                'products': [
+                    'Ball Complete Book of Home Preserving',
+                    'Stainless Steel Mixing Bowl Set',
+                    'PAM Cooking Spray Butter Flavor, 5 Oz'
+                ],
+                'prices': [19.99, 24.99, 5.99],
+                'stock': [10, 100, 0],
+                'type': 'seller',
+                "order_id": [],
+                'order_customer_id': [],
+                'order_customer_full_name': [],
+                'order_customer_sku': [],
+                'order_customer_product_name': [],
+                'order_customer_price_per_unit': [],
+                'order_customer_qty': [],
+                'order_shipping_status': [],
+                'order_customer_total': [],
+            },
+        10003:
+            {
+                'first_name': 'Malcolm',
+                'last_name': 'Smith',
+                'email': 'jj@rhyta.com',
+                'password': 'UDwh&AWD72g29',
+                'type': 'customer'
+            },
+        10004:
+            {
+                'first_name': 'Pascal',
+                'last_name': 'Brogdon',
+                'email': 'mbrogdon@gmail.com',
+                'password': 'UDwh&AWD72g24',
+                'type': 'customer'
+            },
+
+...
+```
 
 #### admin class
 This class provides utility methods for admin-related tasks, such as displaying all the shoppers, and all the sellers to the website owner. It also generates the admin user interface.
