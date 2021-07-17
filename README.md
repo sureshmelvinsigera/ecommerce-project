@@ -149,3 +149,67 @@ This class provides utility methods to log in users and create new users in the 
 ```
 #### menu class
 This class provides the main utility methods for the driver code. This is the main execution point of the program. Regardless of what tasks they have performed once they end the session, it will bring them to this main menu.
+
+## Sample work flows
+
+### admin
+
+```
+ User Login  (Use arrow keys)
+ ❯ Login
+   Register
+   Exit
+```
+```
+User Login  Login
+Please enter the user id: 10000
+Please enter the password: UDwh&AWD72g21
+Admin Menu  (Use arrow keys)
+ ❯ Product search
+   Show all products
+   Add product
+   Edit product
+   Delete product
+   Show all sellers
+   Show customers
+   Current orders
+   Logout
+```   
+
+```
+ Admin Menu  Show all sellers
++-------------------------------------------+
+|                All sellers                |
++------------------+------------------------+
+| Seller full name | Email address          |
++------------------+------------------------+
+| chris herzog     | chriher22@aol.com      |
+| joseph smith     | JosephSSmith@rhyta.com |
++------------------+------------------------+
+```
+  
+```
++-----------------------------------------------------------------------------------------------+
+|                                       Your product list                                       |
++--------+----------------------------------------------------+------------------+--------------+
+| SKU    | Product name                                       | Price per unit $ | In stock QTY |
++--------+----------------------------------------------------+------------------+--------------+
+| su1001 | Python Crash Course, 2nd Edition                   | 29.99            | 10           |
+| su1002 | Automate The Boring Stuff With Python, 2nd Edition | 33.99            | 12           |
+| su1003 | Learning Python, 5th Edition                       | 33.86            | 12           |
++--------+----------------------------------------------------+------------------+--------------+
+```
+
+```
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+|                                                                                 Orders                                                                                 |
++----------+-------------+--------------------+--------+----------------------------------------------------+------------------+-------------+---------------------------+
+| Order ID | Customer ID | Customer full name |  SKU   |                    Product Name                    | Price per unit $ | Ordered QTY |      Shipping status      |
++----------+-------------+--------------------+--------+----------------------------------------------------+------------------+-------------+---------------------------+
+| PZVwELy+ |    10003    |   Malcolm Smith    | su1002 | Automate The Boring Stuff With Python, 2nd Edition |      33.99       |      1      | Order is awaiting picking |
++----------+-------------+--------------------+--------+----------------------------------------------------+------------------+-------------+---------------------------+
+ Update order status  (Use arrow keys)
+ ❯ Yes
+   No
+```
+  
