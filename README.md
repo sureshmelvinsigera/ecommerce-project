@@ -44,7 +44,7 @@ I have spent close to 200 hrs on building this program and achieve a deeper unde
 The system comprises 14 different classes:
 
 #### datastorage class
-This class provides an initial dataset to facilitate all the CRUD operations throughout the entire program. All the Python classes in this system software use this data set to store and retrieve data during the runtime. According to this data structure, there are three different users: site owner, seller and customer. This class does not contain any methods. It incorporates a single class variable to hold the entire dataset.
+This class provides an initial dataset to facilitate all the CRUD operations throughout the entire program. All the Python classes in this system software use this data set to store and retrieve data during the runtime. This dataset comprises three different users; site owner, seller, and customer. This class does not contain any methods. It incorporates a single class variable to hold the entire dataset.
 ```python
 ...
 
