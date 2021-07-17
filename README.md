@@ -152,18 +152,23 @@ This class provides the main utility methods for the driver code. This is the ma
 
 ## Sample work flows
 
-### admin
-
+### admin user
 ```
  User Login  (Use arrow keys)
  ❯ Login
    Register
    Exit
 ```
+
+#### admin login to the system
+
 ```
 User Login  Login
 Please enter the user id: 10000
 Please enter the password: UDwh&AWD72g21
+```
+
+```
 Admin Menu  (Use arrow keys)
  ❯ Product search
    Show all products
@@ -176,6 +181,7 @@ Admin Menu  (Use arrow keys)
    Logout
 ```   
 
+#### admin list all the 3rd party sellers
 ```
  Admin Menu  Show all sellers
 +-------------------------------------------+
@@ -188,6 +194,7 @@ Admin Menu  (Use arrow keys)
 +------------------+------------------------+
 ```
   
+#### admin list all the products that belongs to his/her store 
 ```
 +-----------------------------------------------------------------------------------------------+
 |                                       Your product list                                       |
@@ -200,6 +207,7 @@ Admin Menu  (Use arrow keys)
 +--------+----------------------------------------------------+------------------+--------------+
 ```
 
+#### admin list current pending orders
 ```
 +------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 |                                                                                 Orders                                                                                 |
@@ -212,4 +220,148 @@ Admin Menu  (Use arrow keys)
  ❯ Yes
    No
 ```
-  
+
+---
+
+### seller user
+
+```
+User Login  Login
+Please enter the user id: 10002
+Please enter the password: UDwh&AWD72g23
+```
+
+```
+Seller Menu  (Use arrow keys)
+ ❯ Product search
+   Show all products
+   Add product
+   Edit product
+   Delete product
+   Current orders
+   Logout
+ ```
+
+#### seller search by the keyword, here we can see there are three results for `python` 
+
+ ```
+ Please enter any keyword: python
++--------+----------------------------------------------------+-----+------------------+
+|  SKU   |                    Product name                    | QTY | Price per unit $ |
++--------+----------------------------------------------------+-----+------------------+
+| su1001 |          Python Crash Course, 2nd Edition          |  10 |      29.99       |
+| su1002 | Automate The Boring Stuff With Python, 2nd Edition |  12 |      33.99       |
+| su1003 |            Learning Python, 5th Edition            |  12 |      33.86       |
++--------+----------------------------------------------------+-----+------------------+
+ Seller Menu  (Use arrow keys)
+ ❯ Product search
+   Show all products
+   Add product
+   Edit product
+   Delete product
+   Current orders
+   Logout                 
+```   
+---
+
+### customer user
+
+```
+User Login  Login
+Please enter the user id: 10004
+Please enter the password: UDwh&AWD72g24
+```
+
+#### customer is looking at all the products from the third-party sellers and the site owner
+
+```
+Customer Menu  Add to shopping cart
++---------------------------------------------------------------------------------------------------------------------------------------------+
+|                                                           Products from all stores                                                          |
++--------------+-------------+--------+---------------------------------------------------------------------+------------------+--------------+
+| Selection id | Seller name | SKU    | Product name                                                        | Price per unit $ | In stock QTY |
++--------------+-------------+--------+---------------------------------------------------------------------+------------------+--------------+
+| 1            | 10000       | su1001 | Python Crash Course, 2nd Edition                                    | 29.99            | 10           |
+| 2            | 10000       | su1002 | Automate The Boring Stuff With Python, 2nd Edition                  | 33.99            | 12           |
+| 3            | 10000       | su1003 | Learning Python, 5th Edition                                        | 33.86            | 12           |
+| 4            | 10001       | ch1004 | Calphalon Classic Oil-Infused Ceramic PTFE and PFOA Free Cookware   | 299.99           | 100          |
+| 5            | 10001       | ch1005 | Silicone Cooking Utensil Set                                        | 21.99            | 112          |
+| 6            | 10001       | ch1006 | Flour Water Salt Yeast: The Fundamentals of Artisan Bread and Pizza | 17.99            | 23           |
+| 7            | 10002       | jo1007 | Ball Complete Book of Home Preserving                               | 19.99            | 10           |
+| 8            | 10002       | jo1008 | Stainless Steel Mixing Bowl Set                                     | 24.99            | 100          |
++--------------+-------------+--------+---------------------------------------------------------------------+------------------+--------------+
+```
+
+#### The customer has added two items to the shopping cart by using the unique SKU generated by the system
+```
+Please enter the sku: jo1008
+Please enter the qty: 2
+```
+#### The customer is viewing the shopping cart 
+```
++--------------+---------------------------------+--------+-------------------+-----+
+| Seller name  | Product name                    | SKU    | Price per unit $  | QTY |
++--------------+---------------------------------+--------+-------------------+-----+
+| joseph smith | Stainless Steel Mixing Bowl Set | jo1008 | 24.99 * 2 = 49.98 | 2   |
++--------------+---------------------------------+--------+-------------------+-----+
++--------------+
+| Cart total $ |
++--------------+
+|    49.98     |
++--------------+
+```
+
+#### The customer is ordering out the product
+```
+Would you like to proceed ?  (Use arrow keys)
+ ❯ Yes
+   No
+Your order has been successfully processed
+```
+
+#### The customer trying to check out again but the shopping cart is empty
+```
++-------------+--------------+-----+------------------+-----+
+| Seller name | Product name | SKU | Price per unit $ | QTY |
++-------------+--------------+-----+------------------+-----+
++-------------+--------------+-----+------------------+-----+
++--------------+
+| Cart total $ |
++--------------+
+|      0       |
++--------------+
+```
+
+#### The seller receives the order 
+```
+Please enter the user id: 10002
+Please enter the password: UDwh&AWD72g23
+Seller Menu  Current orders
++-----------------------------------------------------------------------------------------------------------------------------------------------------------+
+|                                                                           Orders                                                                          |
++----------+-------------+--------------------+----------+-------------------------------------+------------------+-------------+---------------------------+
+| Order ID | Customer ID | Customer full name |   SKU    |             Product Name            | Price per unit $ | Ordered QTY |      Shipping status      |
++----------+-------------+--------------------+----------+-------------------------------------+------------------+-------------+---------------------------+
+| JLZakRvV |    10004    |   Pascal Brogdon   | 'jo1008' | ['Stainless Steel Mixing Bowl Set'] |     [24.99]      |      2      | Order is awaiting picking |
++----------+-------------+--------------------+----------+-------------------------------------+------------------+-------------+---------------------------+
+Update order status  (Use arrow keys)
+ ❯ Yes
+   No                                                                                                                                                                  
+```
+
+#### The seller update the shipping status
+```
+Update order status  Yes
+Current shipping status  Order is delayed
+Please enter the order id: JLZakRvV 
+```
+
+```
++--------------------------------------------------------------------------------------------------------------------------------------------------+
+|                                                                      Orders                                                                      |
++----------+-------------+--------------------+----------+-------------------------------------+------------------+-------------+------------------+
+| Order ID | Customer ID | Customer full name |   SKU    |             Product Name            | Price per unit $ | Ordered QTY | Shipping status  |
++----------+-------------+--------------------+----------+-------------------------------------+------------------+-------------+------------------+
+| JLZakRvV |    10004    |   Pascal Brogdon   | 'jo1008' | ['Stainless Steel Mixing Bowl Set'] |     [24.99]      |      2      | Order is delayed |
++----------+-------------+--------------------+----------+-------------------------------------+------------------+-------------+------------------+
+```
