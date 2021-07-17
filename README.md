@@ -8,6 +8,21 @@ After discussing with Professor Beran Necat, I have determined to use a Python d
 
 I have spent close to 200 hrs on building this program and achieve a deeper understanding of this Object-oriented Information system.
 
+## Functionality
+
+### Site Owner
+- Can search for a product
+- View all the products across the system
+- Add new products
+- Edit products
+- Delete products
+- View all the sellers
+- View all the customers
+- View current orders
+- Change shipping status
+- Apply site-wide promotion codes
+
+
 The system comprises 14 different classes:
 
 #### datastorage class
