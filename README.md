@@ -152,7 +152,7 @@ This class provides the main utility methods for the driver code. This is the ma
 
 ## Sample work flows
 
-### admin user
+### The admin user
 ```
  User Login  (Use arrow keys)
  ❯ Login
@@ -160,7 +160,7 @@ This class provides the main utility methods for the driver code. This is the ma
    Exit
 ```
 
-#### admin login to the system
+#### The admin login to the system
 
 ```
 User Login  Login
@@ -181,7 +181,7 @@ Admin Menu  (Use arrow keys)
    Logout
 ```   
 
-#### admin list all the 3rd party sellers
+#### The admin list all the 3rd party sellers
 ```
  Admin Menu  Show all sellers
 +-------------------------------------------+
@@ -194,7 +194,7 @@ Admin Menu  (Use arrow keys)
 +------------------+------------------------+
 ```
   
-#### admin list all the products that belongs to his/her store 
+#### The admin list all the products that belongs to his/her store 
 ```
 +-----------------------------------------------------------------------------------------------+
 |                                       Your product list                                       |
@@ -207,7 +207,7 @@ Admin Menu  (Use arrow keys)
 +--------+----------------------------------------------------+------------------+--------------+
 ```
 
-#### admin list current pending orders
+#### The admin list current pending orders
 ```
 +------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 |                                                                                 Orders                                                                                 |
@@ -223,7 +223,7 @@ Admin Menu  (Use arrow keys)
 
 ---
 
-### seller user
+### The seller user
 
 ```
 User Login  Login
@@ -242,7 +242,7 @@ Seller Menu  (Use arrow keys)
    Logout
  ```
 
-#### seller search by the keyword, here we can see there are three results for `python` 
+#### The seller search by the keyword, here we can see there are three results for `python` 
 
  ```
  Please enter any keyword: python
@@ -264,7 +264,7 @@ Seller Menu  (Use arrow keys)
 ```   
 ---
 
-### customer user
+### The customer user
 
 ```
 User Login  Login
@@ -272,7 +272,7 @@ Please enter the user id: 10004
 Please enter the password: UDwh&AWD72g24
 ```
 
-#### customer is looking at all the products from the third-party sellers and the site owner
+#### The customer is looking at all the products from the third-party sellers and the site owner
 
 ```
 Customer Menu  Add to shopping cart
