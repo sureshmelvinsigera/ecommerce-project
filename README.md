@@ -33,6 +33,14 @@ This class is also liable for monitoring the following bases-cases:
 
 ```python
 ...
+        order_menu_selection = prompt(order_menu)
+        # if the user decided to check out the current order
+        if order_menu_selection['order_menu-selection'] == 'Yes':
+            if len(check_out_sku) == 0:
+                # if the user decided to check out an empty shopping cart, then handle this base-case
+                print("Your shopping basket is empty")
+                # update the state, so the shopping cart class is aware of it
+                Order.status = "Empty"
             else:
                 # the shopping cart is not empty, look up seller by ids
                 for i in range(len(seller_id)):
@@ -69,7 +77,13 @@ This class is also liable for monitoring the following bases-cases:
                                 check_out_price)
 
                 print("Your order has been successfully processed")
-...
+                # update the state, so the shopping cart class is aware of it
+                Order.status = "Success"
+        if order_menu_selection['order_menu-selection'] == 'No':
+            # update the state, so the shopping cart class is aware of it
+            Order.status = "No"
+        # return the order status for later use
+        return Order.status
 
 ```
 
