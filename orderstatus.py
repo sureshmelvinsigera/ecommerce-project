@@ -44,10 +44,10 @@ class OrderStatus:
                     user_record['order_id'][i],
                     user_record['order_customer_id'][i],
                     user_record['order_customer_full_name'][i],
-                    str(user_record['order_customer_sku'][i]),
-                    str(user_record['order_customer_product_name'][i]),
-                    str(user_record['order_customer_price_per_unit'][i]),
-                    str(user_record['order_customer_qty'][i]),
+                    user_record['order_customer_sku'][i],
+                    user_record['order_customer_product_name'][i],
+                    user_record['order_customer_price_per_unit'][i],
+                    user_record['order_customer_qty'][i],
                     user_record['order_shipping_status'][i]
                 ])
             print(order_status_table)

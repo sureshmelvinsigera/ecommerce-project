@@ -90,7 +90,6 @@ class Order:
                             import os
                             import base64
                             order_id = base64.b64encode(os.urandom(6)).decode('ascii')
-                            print(order_id)
                             while order_id not in Order.__ecommerce_data.get(seller_id[i])["order_id"]:
                                 Order.__ecommerce_data.get(seller_id[i])["order_id"].append(order_id)
                             Order.__ecommerce_data.get(seller_id[i])["order_customer_full_name"].append(
@@ -98,10 +97,13 @@ class Order:
                             Order.__ecommerce_data.get(seller_id[i])["order_customer_id"].append(account_number)
                             Order.__ecommerce_data.get(seller_id[i])["order_customer_product_name"].append(
                                 check_out_product_name)
-                            Order.__ecommerce_data.get(seller_id[i])["order_customer_sku"].append(check_out_sku)
-                            Order.__ecommerce_data.get(seller_id[i])["order_customer_qty"].append(check_out_qty)
+                            Order.__ecommerce_data.get(seller_id[i])["order_customer_sku"].append(str(check_out_sku)[1:-1])
+                            Order.__ecommerce_data.get(seller_id[i])["order_customer_qty"].append(
+                                str(check_out_qty)[1:-1])
                             Order.__ecommerce_data.get(seller_id[i])["order_shipping_status"].append(
                                 "Order is awaiting picking")
+                            # Order.__ecommerce_data.get(seller_id[i])["order_customer_total"].append(
+                            #     check_out_qty * check_out_price)
                             Order.__ecommerce_data.get(seller_id[i])["order_customer_price_per_unit"].append(
                                 check_out_price)
 

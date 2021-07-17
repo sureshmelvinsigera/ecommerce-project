@@ -34,6 +34,7 @@ class DataStorage:
             'order_customer_price_per_unit': [33.99],
             'order_customer_qty': [1],
             'order_shipping_status': ["Order is awaiting picking"],
+            'order_customer_total': [33.99],
             'type': 'owner',
         },
         10001:
@@ -59,13 +60,14 @@ class DataStorage:
                 'order_customer_price_per_unit': [],
                 'order_customer_qty': [],
                 'order_shipping_status': [],
+                'order_customer_total': [],
             },
         10002:
             {
                 'first_name': 'joseph',
                 'last_name': 'smith',
                 'email': 'JosephSSmith@rhyta.com',
-                'password': '1',
+                'password': 'UDwh&AWD72g23',
                 'sku': ['jo1007', 'jo1008', 'jo1009'],
                 'products': [
                     'Ball Complete Book of Home Preserving',
@@ -82,14 +84,15 @@ class DataStorage:
                 'order_customer_product_name': [],
                 'order_customer_price_per_unit': [],
                 'order_customer_qty': [],
-                'order_shipping_status': []
+                'order_shipping_status': [],
+                'order_customer_total': [],
             },
         10003:
             {
                 'first_name': 'Malcolm',
                 'last_name': 'Smith',
                 'email': 'jj@rhyta.com',
-                'password': '1',
+                'password': 'UDwh&AWD72g29',
                 'type': 'customer'
             },
         10004:

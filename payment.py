@@ -10,16 +10,16 @@ __status__ = "Staging"
 from payment_interface import PaymentInterface
 
 
-class GizmoAccountingSystem(PaymentInterface):
+class ECommercePaymentGateWay(PaymentInterface):
     """
 
     """
 
     def credit_card(self, purchase):
-        pass
+        card_number = input("Please enter the card number")
 
     def debit_card(self, sale):
-        pass
+        card_number = input("Please enter the card number")
 
     def paypal(self):
-        pass
+        card_number = input("Please enter the card number")
