@@ -8,21 +8,101 @@ After discussing with Professor Beran Necat, I have determined to use a Python d
 
 I have spent close to 200 hrs on building this program and achieve a deeper understanding of this Object-oriented Information system.
 
+## Functionality
+
+#### Site Owner
+- Can search for a product
+- View all the products across the system
+- Add new products
+- Edit products
+- Delete products
+- View all the sellers
+- View all the customers
+- View current orders
+- Change shipping status
+- Apply site-wide promotion codes
+
+#### 3rd party seller
+- Can search for a product
+- View all the product belongs to the seller
+- Add new products
+- Edit products
+- Delete products
+- View current orders
+- Change shipping status
+
+#### Customer
+- Can search for a product
+- View all the products all the sellers
+- Add to shopping cart
+- View shopping cart
+- Edit products
+- Checkout
+- Choose credit card, debit card or PayPal as a payment method
+
+### Classes overview
 The system comprises 14 different classes:
 
 #### datastorage class
-This class provides an initial dataset to facilitate all the CRUD operations throughout the entire program. All the Python classes in this system software use this data set to store and retrieve data during the runtime. According to this data structure, there are three different users: site owner, seller and customer. This class does not contain any methods. It incorporates a single class variable to hold the entire dataset.
+This class provides an initial dataset to facilitate all the CRUD operations throughout the entire program. All the Python classes in this system software use this data set to store and retrieve data during the runtime. This dataset comprises three different users; site owner, seller, and customer. This class does not contain any methods. It incorporates a single class variable to hold the entire dataset.
+```python
+...
 
-#### admin class
+        10002:
+            {
+                'first_name': 'joseph',
+                'last_name': 'smith',
+                'email': 'JosephSSmith@rhyta.com',
+                'password': 'UDwh&AWD72g23',
+                'sku': ['jo1007', 'jo1008', 'jo1009'],
+                'products': [
+                    'Ball Complete Book of Home Preserving',
+                    'Stainless Steel Mixing Bowl Set',
+                    'PAM Cooking Spray Butter Flavor, 5 Oz'
+                ],
+                'prices': [19.99, 24.99, 5.99],
+                'stock': [10, 100, 0],
+                'type': 'seller',
+                "order_id": [],
+                'order_customer_id': [],
+                'order_customer_full_name': [],
+                'order_customer_sku': [],
+                'order_customer_product_name': [],
+                'order_customer_price_per_unit': [],
+                'order_customer_qty': [],
+                'order_shipping_status': [],
+                'order_customer_total': [],
+            },
+        10003:
+            {
+                'first_name': 'Malcolm',
+                'last_name': 'Smith',
+                'email': 'jj@rhyta.com',
+                'password': 'UDwh&AWD72g29',
+                'type': 'customer'
+            },
+        10004:
+            {
+                'first_name': 'Pascal',
+                'last_name': 'Brogdon',
+                'email': 'mbrogdon@gmail.com',
+                'password': 'UDwh&AWD72g24',
+                'type': 'customer'
+            },
+
+...
+```
+
+#### admin.py class
 This class provides utility methods for admin-related tasks, such as displaying all the shoppers, and all the sellers to the website owner. It also generates the admin user interface.
 
-#### customer class
+#### customer.py class
 This class provides utility methods for customer-related tasks, such as product search, adding a product to the shopping cart, displaying the shopping cart for the logged-in user, product checkout and log out functionality. It also generates the customer user interface.
 
-#### seller class
+#### seller.py class
 This class provides utility methods to generate the seller user interface. It also contains seller related functionality, such as product search, which shows all the products that belong to the currently logged-in sellers. The seller can also add new products, update and delete existing products, and check pending orders from different customers. 
 
-#### order class
+#### order.py class
 This class provides utility methods order related tasks. The primary responsibility of this class is to obtain all the required user information from the application UI and transfer it to the data access layer.
 
 This class is also liable for monitoring the following bases-cases:
@@ -93,26 +173,40 @@ This class is also liable for monitoring the following bases-cases:
 
 ```
 
-#### orderstatus class
+#### orderstatus.py class
 
 This class provides the site admin or the 3rd party seller to revise the shipping status. Such that, Order is awaiting picking, Order is shipped, Order is delayed, or Order is delivered by using the six digits unique order number which was generated by the order class.
 
-#### product class
-This class provides utility methods for all the product-related actions such as add products, edit existing products, deleting a product, and show all products. The customer, admin and seller classes are composite of the product class in order to perform the basic functionality.
+#### product.py class
+This class provides utility methods for all the product-related actions such as add products, edit existing products, deleting a product, and show all products. The customer, admin and seller classes are composite of the product class in order to perform the basic functionality. This class also generates a unique SKU code when the seller adds a new product to the system. This helps to maintain the data integrity across the sellers.
 
-#### productsearch class
-This class provides utility methods to search products by keywords and return the results from the storage.
+```python
+...
+        # generate unique sku for the new product based on the last product in the user's data storage
+        sku_pos = len(Product.__ecommerce_data.get(account_number)["sku"]) - 1
+        sku = Product.__ecommerce_data.get(account_number)["sku"][sku_pos]
+        # separate text from integer
+        temp_sku = re.compile("([a-zA-Z]+)([0-9]+)")
+        res = temp_sku.match(sku).groups()
+        sku_str = Product.__ecommerce_data.get(account_number)['first_name'][:2] + str(int(res[1]) + 1)
+        Product.__ecommerce_data.get(account_number)["sku"].append(sku_str)
+        print("product has been successfully added")
+...
+```
 
-#### shoppingcart class
-This class provides utility methods for shopping cart-related tasks. Such as, adding new products to the shopping cart, current cart lookup, and checkout. When the user selects the checkout method, it created a new instance of the order class. In the OOP paradigm, this is a relationship known as has a relationship. 
+#### productsearch.py class
+This class provides utility methods to search products by keywords and return the results from the data storage.
 
-#### payment_interface class
+#### shoppingcart.py class
+This class provides utility methods for shopping cart-related tasks. Such as, adding new products to the shopping cart, current cart lookup, and checkout. When the user selects the checkout method, it created a new instance of the order class. In the OOP paradigm, this is a connection known as `has a relationship`.
+
+#### payment_interface.py class
 The payment interface is an abstract class, which means there is no actual implementation that takes place inside this file. The payment class must employ inheritance and implement all the abstract methods specified in this class structure.
 
-#### payment class
-This class provides utility methods for payment-related tasks. This class inherits its basic characteristics from the payment_interface class by utilizing the OOP concept known as `is an association`. This class must implement all the abstract methods or else it will cause an error.
+#### payment.py class
+This class provides utility methods for payment-related tasks. This class inherits its underlying characteristics from the payment_interface class by utilizing the OOP concept known as `is an association`. This class must implement all the abstract methods or else it will cause an error.
 
-#### user class
+#### user.py class
 This class provides utility methods to log in users and create new users in the local data storage. The new users can be customers and 3rd party sellers. The login method implemented inside this class check the user credentials and create an instance of that specific user type.
 
 ```python
@@ -153,7 +247,7 @@ This class provides utility methods to log in users and create new users in the 
 
 ...
 ```
-#### menu class
+#### menu.py class
 This class provides the main utility methods for the driver code. This is the main execution point of the program. Regardless of what tasks they have performed once they end the session, it will bring them to this main menu.
 
 ## Sample work flows
