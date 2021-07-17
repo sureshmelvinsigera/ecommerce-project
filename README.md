@@ -106,5 +106,45 @@ The payment interface is an abstract class, which means there is no actual imple
 #### payment class
 This class provides utility methods for payment-related tasks. This class inherits its basic characteristics from the payment_interface class by utilizing the OOP concept known as `is an association`. This class must implement all the abstract methods or else it will cause an error.
 
+#### user class
+This class provides utility methods to log in users and create new users in the local data storage. The new users can be customers and 3rd party sellers. The login method implemented inside this class check the user credentials and create an instance of that specific user type.
 
+```python
+
+...
+
+    def login(self, account_number, password):
+        """
+        This method validated the user credentials based on user id, and password, and then it will route the user
+        to a specific user dashboard.
+        :param account_number:
+        :param password:
+        :return:
+        """
+        # if the account number exist then retrieve the record
+        if User.__ecommerce_data.get(account_number):
+            # set the current record for validation
+            self.record = User.__ecommerce_data.get(account_number)
+            if self.record['password'] == password and self.record['type'] == "owner":
+                # call admin main menu upon successful login
+                admin = Admin()
+                admin.site_admin(account_number)
+            elif self.record['password'] == password and self.record['type'] == "seller":
+                # call seller menu upon successful login
+                seller = Seller()
+                seller.seller_admin(account_number)
+            elif self.record['password'] == password and self.record['type'] == "customer":
+                # call customer menu upon successful login
+                customer = Customer()
+                customer.customer_admin(account_number)
+            else:
+                # incorrect password, set to record None for security reasons
+                print("User name or password is incorrect")
+                # site_menu = Menu()
+                # site_menu.user_login_menu()
+        else:
+            print("Account not found")
+
+...
+```
 
