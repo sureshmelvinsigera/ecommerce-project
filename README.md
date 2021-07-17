@@ -22,6 +22,23 @@ I have spent close to 200 hrs on building this program and achieve a deeper unde
 - Change shipping status
 - Apply site-wide promotion codes
 
+### 3rd party seller
+- Can search for a product
+- View all the product belongs to the seller
+- Add new products
+- Edit products
+- Delete products
+- View current orders
+- Change shipping status
+
+### Customer
+- Can search for a product
+- View all the products all the sellers
+- Add to shopping cart
+- View shopping cart
+- Edit products
+- Checkout
+- Choose credit card, debit card or PayPal as a payment method
 
 The system comprises 14 different classes:
 
