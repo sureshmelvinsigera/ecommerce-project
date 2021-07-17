@@ -100,3 +100,11 @@ This class provides utility methods to search products by keywords and return th
 #### shoppingcart class
 This class provides utility methods for shopping cart-related tasks. Such as, adding new products to the shopping cart, current cart lookup, and checkout. When the user selects the checkout method, it created a new instance of the order class. In the OOP paradigm, this is a relationship known as has a relationship. 
 
+#### payment_interface class
+The payment interface is an abstract class, which means there is no actual implementation that takes place inside this file. The payment class must employ inheritance and implement all the abstract methods specified in this class structure.
+
+#### payment class
+This class provides utility methods for payment-related tasks. This class inherits its basic characteristics from the payment_interface class by utilizing the OOP concept known as `is an association`. This class must implement all the abstract methods or else it will cause an error.
+
+
+
