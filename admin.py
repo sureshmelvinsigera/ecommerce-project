@@ -119,9 +119,10 @@ class Admin:
             # If the user selection is to see all the customers
             if admin_menu_selection['admin-menu-selection'] == 'Show customers':
                 self.show_all_customers()
+            # If the user selection is to view all the orders
             if admin_menu_selection['admin-menu-selection'] == 'Current orders':
                 order_status = OrderStatus()
-                order_status.status()
+                order_status.status(account_number)
             # if the user decided to logout, then show the main menu
             if admin_menu_selection['admin-menu-selection'] == 'Logout':
                 menu = Menu()

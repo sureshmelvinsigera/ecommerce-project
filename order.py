@@ -27,9 +27,11 @@ class Order:
                       customer_address,
                       customer_cc,
                       seller_id,
-                      sku,
+                      check_out_sku,
                       pos,
-                      check_out_qty):
+                      check_out_qty,
+                      check_out_price,
+                      check_out_product_name):
         """
         This method obtains all the required user information from the ShoppingCart class in order to process the order.
         This Class is also responsible for checking the following bases-cases:
@@ -43,9 +45,11 @@ class Order:
         :param customer_address:
         :param customer_cc:
         :param seller_id:
-        :param sku:
+        :param check_out_sku:
         :param pos:
         :param check_out_qty:
+        :param check_out_price:
+        :param check_out_product_name:
         :return:
         """
         order_menu = [
@@ -63,7 +67,7 @@ class Order:
         order_menu_selection = prompt(order_menu)
         # if the user decided to check out the current order
         if order_menu_selection['order_menu-selection'] == 'Yes':
-            if len(sku) == 0:
+            if len(check_out_sku) == 0:
                 # if the user decided to check out an empty shopping cart, then handle this base-case
                 print("Your shopping basket is empty")
                 # update the state, so the shopping cart class is aware of it
@@ -76,19 +80,31 @@ class Order:
                     # for each sku in the customer cart check if it's a match with the seller sku data list
                     for r in range(len(record["sku"])):
                         # check the added skus are available in the data storage
-                        if sku[i] == record["sku"][r]:
+                        if check_out_sku[i] == record["sku"][r]:
                             # for debug purpose only
                             # print("Before ", Order.__ecommerce_data.get(seller_id[i])["stock"][r])
                             # update the new stock qty for each seller
                             Order.__ecommerce_data.get(seller_id[i])["stock"][r] = \
                                 Order.__ecommerce_data.get(seller_id[i])["stock"][r] - check_out_qty[i]
                             # add order details to the seller account
+                            import os
+                            import base64
+                            order_id = base64.b64encode(os.urandom(6)).decode('ascii')
+                            print(order_id)
+                            while order_id not in Order.__ecommerce_data.get(seller_id[i])["order_id"]:
+                                Order.__ecommerce_data.get(seller_id[i])["order_id"].append(order_id)
                             Order.__ecommerce_data.get(seller_id[i])["order_customer_full_name"].append(
                                 customer_record["first_name"] + " " + customer_record["last_name"])
                             Order.__ecommerce_data.get(seller_id[i])["order_customer_id"].append(account_number)
-                            Order.__ecommerce_data.get(seller_id[i])["order_customer_sku"].append(account_number)
-                            Order.__ecommerce_data.get(seller_id[i])["order_customer_qty"].append(account_number)
-                            Order.__ecommerce_data.get(seller_id[i])["order_shipping_status"].append(False)
+                            Order.__ecommerce_data.get(seller_id[i])["order_customer_product_name"].append(
+                                check_out_product_name)
+                            Order.__ecommerce_data.get(seller_id[i])["order_customer_sku"].append(check_out_sku)
+                            Order.__ecommerce_data.get(seller_id[i])["order_customer_qty"].append(check_out_qty)
+                            Order.__ecommerce_data.get(seller_id[i])["order_shipping_status"].append(
+                                "Order is awaiting picking")
+                            Order.__ecommerce_data.get(seller_id[i])["order_customer_price_per_unit"].append(
+                                check_out_price)
+
                 print("Your order has been successfully processed")
                 # update the state, so the shopping cart class is aware of it
                 Order.status = "Success"

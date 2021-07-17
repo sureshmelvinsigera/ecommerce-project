@@ -36,7 +36,7 @@ class Customer:
         :return:
         """
         self.__account_number = account_number
-        # customer adin menu
+        # customer admin menu
         while True:
             customer_menu = [
                 {
@@ -65,10 +65,10 @@ class Customer:
             # If the user decided add an item to the shopping cart
             if customer_menu_selection['customer-menu-selection'] == 'Add to shopping cart':
                 product.show_all_products()
-                # selection_id = input("Please enter the sku: ")
-                # selection_qty = int(input("Please enter the qty: "))
-                # self.__shopping_cart.add_to_cart(selection_id, selection_qty)
-                self.__shopping_cart.add_to_cart("su1003", 1)
+                selection_id = input("Please enter the sku: ")
+                selection_qty = int(input("Please enter the qty: "))
+                self.__shopping_cart.add_to_cart(selection_id, selection_qty)
+                # self.__shopping_cart.add_to_cart("su1003", 1)
                 # self.__shopping_cart.add_to_cart("jo1007", 2)
                 # self.__shopping_cart.add_to_cart("jo1005", 1)
             # If the user decided to see the what's in the shopping cart

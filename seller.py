@@ -14,6 +14,7 @@ from product import Product
 from datastorage import DataStorage
 from main import Menu
 from searchdatastorage import ProductSearch
+from orderstatus import OrderStatus
 
 
 class Seller:
@@ -44,6 +45,7 @@ class Seller:
                         'Add product',
                         'Edit product',
                         'Delete product',
+                        'Current orders',
                         'Logout'
                     ]
                 }
@@ -70,6 +72,9 @@ class Seller:
             # If the user selection is to delete an existing product
             if seller_menu_selection['seller-menu-selection'] == 'Delete product':
                 product.delete_product(account_number)
+            if seller_menu_selection['seller-menu-selection'] == 'Current orders':
+                order_status = OrderStatus()
+                order_status.status(account_number)
             # if the user decided to logout, then show the main menu
             if seller_menu_selection['seller-menu-selection'] == 'Logout':
                 menu = Menu()

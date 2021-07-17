@@ -101,9 +101,14 @@ class ShoppingCart:
         new_order_request.process_order(
             account_number,
             customer_record,
-            customer_address, customer_cc, self.__seller_id, self.__sku,
+            customer_address,
+            customer_cc,
+            self.__seller_id,
+            self.__sku,
             self.__pos,
-            self.__check_out_qty
+            self.__check_out_qty,
+            self.__price,
+            self.__product_name
         )
         # the order is successful, remove all items from the cart by emptying the instance variables
         if new_order_request.status == "Success":
