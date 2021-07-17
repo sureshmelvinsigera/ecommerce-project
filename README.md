@@ -1,6 +1,12 @@
 
 
-# ECommerce System Implementation
+# The ESSEX Project
+
+In this module 2 (Object-Oriented Information Systems) of my master studies at the University of Essex, I did a UML class diagram for a supermarket. Based on my class design I have implemented the fully function Python OOP console-based program to mimic the eCommerce shopping cart software. 
+
+After discussing with Professor Beran Necat, I have determined to use a Python dictionary data structure to hold the data and using inheritance to manipulate the data across the system. This program allows users such as site admin, sellers and customers to interact with the system simultaneously while preserving data (session) integrity.
+
+I have spent close to 200 hrs on building this program and achieve a deeper understanding of this Object-oriented Information system.
 
 The system comprises 14 different classes:
 
