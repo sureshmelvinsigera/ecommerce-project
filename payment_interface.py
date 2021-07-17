@@ -3,7 +3,7 @@ from abc import ABC, abstractmethod
 
 class PaymentInterface(ABC):
     """
-
+    This abstract class must be implement by the payment class by achiving inhertance.
     """
 
     @abstractmethod

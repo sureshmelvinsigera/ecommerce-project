@@ -14,7 +14,7 @@ from PyInquirer import prompt
 
 class Menu:
     """
-    This class provides main utility methods for the driver codes
+    This class provides main utility methods for the driver code
     """
 
     @staticmethod
