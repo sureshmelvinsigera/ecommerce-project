@@ -147,4 +147,5 @@ This class provides utility methods to log in users and create new users in the 
 
 ...
 ```
-
+#### menu class
+This class provides the main utility methods for the driver code. This is the main execution point of the program. Regardless of what tasks they have performed once they end the session, it will bring them to this main menu.
